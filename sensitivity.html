@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Хулганы мэдрэмж хөрвүүлэгч: CS2, Valorant, Apex</title>
+<meta name="description" content="CS2, Valorant, Apex, Overwatch 2 хооронд хулганы мэдрэмж, eDPI, cm/360-г яг адилаар хөрвүүл. Үнэгүй, монголоор.">
+<meta property="og:title" content="Хулганы мэдрэмж хөрвүүлэгч: CS2, Valorant, Apex">
+<meta property="og:description" content="CS2, Valorant, Apex, Overwatch 2 хооронд хулганы мэдрэмж, eDPI, cm/360-г яг адилаар хөрвүүл. Үнэгүй, монголоор.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index,follow">
+
+<style>
+:root{--bg:#0a1120;--p:#101a2e;--p2:#16233b;--ln:#203054;--ink:#e8eefc;--mu:#8fa0bf;--or:#f5a30f;--on:#1a1200;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#e9eef6;--p:#fff;--p2:#eef2f9;--ln:#cdd7e6;--ink:#0f1b30;--mu:#52627c;--or:#d98400;--on:#fff}}
+:root[data-theme="light"]{--bg:#e9eef6;--p:#fff;--p2:#eef2f9;--ln:#cdd7e6;--ink:#0f1b30;--mu:#52627c;--or:#d98400;--on:#fff}
+:root[data-theme="dark"]{--bg:#0a1120;--p:#101a2e;--p2:#16233b;--ln:#203054;--ink:#e8eefc;--mu:#8fa0bf;--or:#f5a30f;--on:#1a1200}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,"Segoe UI",sans-serif}
+.w{max-width:720px;margin:0 auto;padding:16px}
+h1{font:800 clamp(32px,8vw,50px)/1 "Arial Narrow",Impact,sans-serif;font-style:italic;margin:6px 0 4px}h1 i{color:var(--or)}
+.sub{color:var(--mu);margin:0 0 16px}
+.pn{background:var(--p);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:14px}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.f{grid-template-columns:1fr}}
+label{display:block;color:var(--mu);font-size:14px;margin-bottom:4px}
+input,select{width:100%;padding:11px;border:1px solid var(--ln);background:var(--p2);color:var(--ink);border-radius:6px;font:600 17px inherit}
+:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.res{background:var(--or);color:var(--on);border-radius:10px;padding:16px;text-align:center}
+.res b{display:block;font:800 clamp(40px,12vw,64px)/1 "Arial Narrow",Impact,sans-serif}
+.res span{font-weight:600}
+.t{width:100%;border-collapse:collapse}.t td,.t th{padding:8px 4px;border-bottom:1px solid var(--ln);text-align:left}.t th{color:var(--mu);font-weight:600;font-size:14px}.t td:last-child,.t th:last-child{text-align:right}
+.note{color:var(--mu);font-size:14px}
+.sw{background:var(--p2);border:1px solid var(--ln);color:var(--ink);border-radius:6px;padding:8px 14px;font-weight:600;cursor:pointer;margin:10px 0 0}
+footer{color:var(--mu);font-size:13px;text-align:center;padding:6px 0 20px}
+</style>
+</head>
+<body>
+<div class="w"><p style="margin:0"><a href="index.html" style="color:var(--or);font-weight:600">← Бүх хэрэгсэл</a></p>
+<h1>Хулганы <i>мэдрэмж</i> хөрвүүлэгч</h1>
+<p class="sub">Нэг тоглоомын мэдрэмжээ өөр тоглоом руу яг адил байхаар хөрвүүл.</p>
+<div class="pn">
+<div class="f">
+<div><label for="g1">Одоо тоглож буй тоглоом</label><select id="g1"></select></div>
+<div><label for="g2">Хөрвүүлэх тоглоом</label><select id="g2"></select></div>
+<div><label for="s">Мэдрэмж (sensitivity)</label><input id="s" type="number" inputmode="decimal" min="0" step="any" value="1.2"></div>
+<div><label for="d">Хулганын DPI</label><input id="d" type="number" inputmode="decimal" min="1" step="any" value="800"></div>
+</div>
+<button class="sw" id="sw">⇅ Солих</button>
+</div>
+<div class="res" id="res"><span id="rl">Шинэ мэдрэмж</span><b id="rv">0</b><span id="rg"></span></div>
+<div class="pn" style="margin-top:14px"><table class="t"><tr><th></th><th>Одоогийн</th><th>Шинэ</th></tr>
+<tr><td>Мэдрэмж</td><td id="a1"></td><td id="b1"></td></tr>
+<tr><td>eDPI</td><td id="a2"></td><td id="b2"></td></tr>
+<tr><td>360° эргэхэд</td><td id="a3" colspan="2" style="text-align:right"></td></tr></table>
+<p class="note">eDPI = DPI × мэдрэмж. Хоёр тоглоомд 360° эргэхэд хулганыг адил зайд хөдөлгөнө.</p></div>
+<p class="note" id="err" role="status"></p>
+<footer>Эргэлтийн коэффициент (yaw) нь тоглоомын нийтэд мэдэгдэх утга. Ямар нэг тоглоомын шинэчлэлтээр өөрчлөгдсөн бол хэлээрэй. Valve болон бусад компанитай холбоогүй.</footer>
+</div>
+<script>
+var G=[["CS2 / CS:GO",0.022],["Valorant",0.07],["Apex Legends",0.022],["Overwatch 2",0.0066],["Call of Duty",0.0066],["Quake / Source (TF2, CS 1.6)",0.022]];
+var $=function(i){return document.getElementById(i)};
+G.forEach(function(g,i){["g1","g2"].forEach(function(id,j){var o=document.createElement("option");o.value=i;o.textContent=g[0];if(i===(j?1:0))o.selected=true;$(id).appendChild(o)})});
+function f(n,d){return(+n.toFixed(d)).toString()}
+function calc(){var a=G[+$("g1").value],b=G[+$("g2").value],s=parseFloat($("s").value),d=parseFloat($("d").value);
+if(!(s>0)||!(d>0)){$("err").textContent="Мэдрэмж болон DPI-д 0-ээс их тоо оруулна уу.";$("rv").textContent="–";return}
+$("err").textContent="";var n=s*a[1]/b[1],cm=360/(s*a[1]*d)*2.54,inch=cm/2.54;
+$("rl").textContent=b[0]+"-ийн мэдрэмж";$("rv").textContent=f(n,n<1?4:3);$("rg").textContent="DPI "+f(d,0)+" дээр";
+$("a1").textContent=f(s,3);$("b1").textContent=f(n,3);$("a2").textContent=f(s*d,1);$("b2").textContent=f(n*d,1);
+$("a3").textContent=f(cm,1)+" см ("+f(inch,1)+" инч)"}
+["g1","g2","s","d"].forEach(function(i){$(i).oninput=calc;$(i).onchange=calc});
+$("sw").onclick=function(){var t=$("g1").value;$("g1").value=$("g2").value;$("g2").value=t;var n=$("rv").textContent;if(!isNaN(parseFloat(n)))$("s").value=n;calc()};
+calc();
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ТАНЫ-НЭР.github.io/skinzuun/sitemap.xml
